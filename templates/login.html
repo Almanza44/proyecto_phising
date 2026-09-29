@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="card">
+        <img src="/static/images/logo.png" alt="logo" class="logo" width="280" height="260" >
+        <h1 id="titulo">Iniciar sesión</h1>
+        <p class="subtitulo" id="subtitulo">Ingresa tus credenciales</p>
+
+        <form id="formulario">
+            <label for="usuario">Nombre de usuario:</label>
+            <input type="text" id="usuario" name="usuario" autocomplete="username" required>
+
+            <div id="campo-email" style="display:none;">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email">
+            </div>
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" autocomplete="current-password" required>
+
+            <button type="submit" id="boton">Entrar</button>
+        </form>
+
+        <p class="cambio-modo">
+            <span id="texto-cambio">¿No tienes cuenta?</span>
+            <a href="#" id="toggle">Regístrate</a>
+        </p>
+
+        <p id="mensaje" class="mensaje"></p>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

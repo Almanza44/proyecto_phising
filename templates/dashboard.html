@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="card dashboard">
+    <img src="/static/images/phising.png" alt="logo" class="logo" width="280" height="280">
+    <h1>¡Bienvenido a nuestra página!</h1>
+    <p class="subtitulo" id="saludo">Esta es la página de inicio</p>
+    
+    <div class="info-box">
+        <p class="label">Token de sesión</p>
+        <code id="token">—</code>
+    </div>
+
+    <div class="leccion">
+        <h2>Cuidado con el phishing</h2>
+        <p>
+            Hecto y sus amigos han robado tu información utilizando phishing.
+            No permitas que esto vuelva a suceder tomando las siguientes precauciones:
+        </p>
+
+        <div class="paso">
+            <h3>1. Identifica</h3>
+            <ul>
+                <li>Revisa las direcciones del correo que brinda el enlace.</li>
+                <li>Revisa cómo está escrito el sitio. ¿Notas algo inusual?</li>
+                <li>Ten cuidado con frases como: "Tu cuenta será suspendida" o "Debes actuar de inmediato".</li>
+            </ul>
+        </div>
+
+        <div class="paso">
+            <h3>2. Verifica</h3>
+            <ul>
+                <li>Escribe manualmente el sitio oficial de la entidad o compañía que supuestamente envió el correo.</li>
+                <li>Contacta con atención al cliente a través de canales oficiales.</li>
+            </ul>
+        </div>
+
+        <div class="paso">
+            <h3>3. Protege</h3>
+            <ul>
+                <li>Activa verificación en dos pasos.</li>
+                <li>Usa contraseñas únicas.</li>
+                <li>No compartas códigos de verificación.</li>
+                <li>Cambia las contraseñas cada cierto tiempo.</li>
+            </ul>
+        </div>
+    </div>
+
+    <button id="cerrar-sesion" class="btn-secundario">Cerrar sesión</button>
+</div>
+
+    <script>
+        // Recuperamos los datos guardados en el login
+        const usuario = localStorage.getItem('usuario');
+        const token = localStorage.getItem('token');
+
+        // Si no hay sesión, mandamos de vuelta al login
+        if (!usuario || !token) {
+            window.location.href = '/';
+        } else {
+            document.getElementById('saludo').textContent = `Hola, ${usuario}. Tu sesión está activa.`;
+            document.getElementById('token').textContent = token;
+        }
+
+        // Cerrar sesión
+        document.getElementById('cerrar-sesion').addEventListener('click', () => {
+            localStorage.removeItem('usuario');
+            localStorage.removeItem('token');
+            window.location.href = '/';
+        });
+    </script>
+</body>
+</html>
